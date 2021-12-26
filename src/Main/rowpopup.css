@@ -1,0 +1,72 @@
+.modalBackground {
+    width: 80vw;
+    height: 80vh;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContainer {
+    height: 100%;
+    max-width: 70%;
+    border-radius: 12px;
+    background-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+
+.modalContainer .body {
+    flex: 1;
+    display: flex;
+    height: 400px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.modalContainer .body img {
+
+    height: 100%;
+    width: 100%;
+}
+
+.modalContent {
+    margin-top: 20px;
+}
+
+.modalContainer .footer {
+    margin-top: 2%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer .footer button {
+    width: 100px;
+    height: 42px;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#cancelBtn {
+    background-color: crimson;
+}
+
+#trailerBtn {
+    background-color: rgb(219, 174, 24);
+}
