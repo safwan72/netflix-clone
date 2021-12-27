@@ -1,8 +1,8 @@
 
-import axios from "../axios";
+import axios from "../../Utils/axios";
 import React from "react";
-import reqs from "../requests";
-import './banner.css';
+import reqs from "../../Utils/requests";
+import './CSS/banner.css';
 const Banner = () => {
     const [movie, setmovie] = React.useState([]);
     const baseURL = "https://image.tmdb.org/t/p/original";

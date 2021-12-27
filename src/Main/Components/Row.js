@@ -1,6 +1,6 @@
-import axios from "../axios";
+import axios from "../../Utils/axios";
 import React from "react";
-import './row.css';
+import './CSS/row.css';
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import { useAlert } from 'react-alert'
@@ -11,6 +11,7 @@ const Row = ({ title, fettchurl, isLargeRow }) => {
     const [TrailerURL, setTrailerURL] = React.useState("")
     const [openpopup, setopenpopup] = React.useState(false);
     const [selectedmovie, setselectedmovie] = React.useState("");
+    const refContainer = React.useRef(null);
     React.useEffect(() => {
         async function fetchData() {
             const request = await axios.get(fettchurl);
@@ -53,17 +54,30 @@ const Row = ({ title, fettchurl, isLargeRow }) => {
                 })
         }
     }
+
     return (
         <div className='row__row'>
             <h2 className='row__title'>{title}</h2>
-            <div className="row__images">
-                {movie.map((move) => (
-                    <img key={move.id} onClick={() => handlepopup(move)} className={`row__image ${isLargeRow && "row__imageLarge"}`} src={`${baseURL}${isLargeRow ? move?.poster_path : move?.backdrop_path}`} alt={title} />
-                ))}
+            <div className="row__div">
+                <div className="row__images" ref={refContainer}>
+                    <i className="fas fa-arrow-right fas__arr fa-2x slider-arrow-right"
+                        onClick={() => {
+                            refContainer.current.scrollTo({ behavior: 'smooth', left: refContainer.current.scrollLeft + 50 })
+                        }}
+                    ></i>
+                    <i className="fas fa-arrow-left fas__arr fa-2x slider-arrow-left"
+                        onClick={() => {
+                            refContainer.current.scrollTo({ behavior: 'smooth', left: refContainer.current.scrollLeft - 50 })
+                        }}></i>
+                    {movie.map((move) => (
+                        <img key={move.id} onClick={() => handlepopup(move)} className={`row__image ${isLargeRow && "row__imageLarge"}`} src={`${baseURL}${isLargeRow ? move?.poster_path : move?.backdrop_path}`} alt={title} />
+                    ))}
+                </div>
             </div>
-            <RowPopUp openpopup={openpopup} handlepopup={handlepopup} selectedmovie={selectedmovie}
-                setselectedmovie={setselectedmovie} handleClick={handleClick} />
-            {TrailerURL && <YouTube videoId={TrailerURL} opts={opts} />}
+            {openpopup && <RowPopUp openpopup={openpopup} handlepopup={handlepopup} selectedmovie={selectedmovie}
+                setselectedmovie={setselectedmovie} handleClick={handleClick} />}
+
+            {TrailerURL && <YouTube videoId={TrailerURL} opts={opts} style={{ marginTop: "15px" }} />}
 
         </div>
     );

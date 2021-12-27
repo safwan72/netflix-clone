@@ -1,5 +1,5 @@
 import React from 'react'
-import './rowpopup.css';
+import './CSS/rowpopup.css';
 
 const RowPopUp = ({ openpopup, handlepopup, selectedmovie, setselectedmovie, handleClick }) => {
     console.log("From POPUP", selectedmovie);
