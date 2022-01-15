@@ -80,7 +80,6 @@ export const fetchprofile = (u_id) => (dispatch) => {
         .catch((error) => {
             if (error.response) {
                 // Request made and server responded
-                console.log(error.response.data);
                 console.log(error.response.status);
                 console.log(error.response.headers);
             } else if (error.request) {
@@ -124,7 +123,6 @@ export const authSignin = (email, password, mode) => (dispatch) => {
         .catch((error) => {
             if (error.response) {
                 // Request made and server responded
-                console.log(error.response.data);
                 console.log(error.response.status);
                 console.log(error.response.headers);
             } else if (error.request) {

@@ -2,7 +2,7 @@ import React from 'react'
 import './CSS/rowpopup.css';
 import Loader from '../../Utils/Loader';
 const RowPopUp = ({ openpopup, handlepopup, selectedmovie, setselectedmovie, handleClick }) => {
-    const baseURL = process.env.REACT_APP_TMDB_IMAGE_URL;
+    const baseURL = `${process.env.REACT_APP_TMDB_IMAGE_URL}`;
     const handleclose = () => {
         handlepopup();
         setselectedmovie("");

@@ -13,7 +13,7 @@ const LoginScreen = () => {
     const redirectSignIn = () => {
         return navigate("/signin", {
             state: {
-                "email": userEmail
+                "email": userEmail ? userEmail : ""
             }
         })
     }

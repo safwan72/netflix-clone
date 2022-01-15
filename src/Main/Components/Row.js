@@ -7,7 +7,7 @@ import movieTrailer from "movie-trailer";
 import RowPopUp from "./RowPopUp";
 import { toast } from 'react-toastify';
 const Row = ({ title, fettchurl, isLargeRow, searchquery }) => {
-    const baseURL = process.env.REACT_APP_TMDB_IMAGE_URL;
+    const baseURL = `${process.env.REACT_APP_TMDB_IMAGE_URL}`;
     const [movie, setmovie] = React.useState([]);
     const [TrailerURL, setTrailerURL] = React.useState("")
     const [openpopup, setopenpopup] = React.useState(false);

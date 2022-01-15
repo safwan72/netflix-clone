@@ -1,7 +1,7 @@
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_KEY = `${process.env.REACT_APP_TMDB_API_KEY}`;
 
 
-export const baseURL = process.env.REACT_APP_TMDB_API_ENDPOINT_URL;
+export const baseURL = `${process.env.REACT_APP_TMDB_API_ENDPOINT_URL}`;
 
 const reqs = {
 

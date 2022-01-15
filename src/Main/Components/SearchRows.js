@@ -5,7 +5,7 @@ import movieTrailer from "movie-trailer";
 import RowPopUp from "./RowPopUp";
 import { toast } from 'react-toastify';
 const SearchRows = ({ movie }) => {
-    const baseURL = process.env.REACT_APP_TMDB_IMAGE_URL;
+    const baseURL = `${process.env.REACT_APP_TMDB_IMAGE_URL}`;
     const [TrailerURL, setTrailerURL] = React.useState("")
     const [openpopup, setopenpopup] = React.useState(false);
     const [selectedmovie, setselectedmovie] = React.useState("");

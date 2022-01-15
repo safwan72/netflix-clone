@@ -19,7 +19,7 @@ const Payment = () => {
     React.useEffect(() => {
         setselectedplan(location.state?.item)
     }, [location.state?.item, selectedplan])
-    const cl_pk = process.env.REACT_APP_STRIPE_KEY;
+    const cl_pk = `${process.env.REACT_APP_STRIPE_KEY}`;
     const header = {
         headers: {
             "Content-Type": "application/json",

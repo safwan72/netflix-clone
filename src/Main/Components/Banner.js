@@ -6,7 +6,7 @@ import Loader from "../../Utils/Loader";
 import './CSS/banner.css';
 const Banner = () => {
     const [movie, setmovie] = React.useState([]);
-    const baseURL = process.env.REACT_APP_TMDB_IMAGE_URL;
+    const baseURL = `${process.env.REACT_APP_TMDB_IMAGE_URL}`;
 
     React.useEffect(() => {
         async function fetchData() {
