@@ -6,4 +6,9 @@
 
 .app {
   background-color: #111;
+  height: 100%;
+}
+
+.toast_error_class_progress {
+  background-color: red !important;
 }

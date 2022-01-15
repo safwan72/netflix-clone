@@ -1,0 +1,9 @@
+.paymentscreen {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #fff;
+    flex-wrap: wrap;
+}

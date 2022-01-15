@@ -1,0 +1,60 @@
+.footer__login__component__parent {
+    color: rgb(187, 182, 182);
+    padding: 50px 20px;
+    font-weight: 400;
+    font-size: 13px;
+    padding-bottom: 70px;
+}
+
+.footer__login__component {
+    width: 70%;
+    margin: auto;
+}
+
+@media screen and (max-width:850px) {
+    .footer__login__component {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .footer__login__component {
+        width: 70%;
+    }
+}
+
+.footer__login__top {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer__login__middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+@media screen and (max-width:500px) {
+    .footer__login__middle {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.footer__login__links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.footer__login__links p {
+    margin-bottom: 10px;
+}
+
+.footer__login__links p:hover {
+    cursor: pointer;
+    text-decoration: underline
+}

@@ -1,0 +1,32 @@
+/* .row__row__search__image {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+} */
+
+.row__row__search__component {
+    padding-top: 100px;
+    max-width: 1200px;
+    min-width: 300px;
+    margin: auto;
+}
+
+.row_row_search_flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.row_search_image {
+    width: 100%;
+    object-fit: contain;
+    height: 150px;
+    transition: transform 450ms;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.row_search_image:hover {
+    transform: scale(1.05);
+}

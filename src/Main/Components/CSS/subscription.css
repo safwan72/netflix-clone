@@ -1,0 +1,82 @@
+.subscibe__component {
+    max-width: 800px;
+    width: 70%;
+    margin: auto;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width:850px) {
+    .subscibe__component {
+        flex-direction: column;
+
+    }
+}
+
+.subscibe__component__parent {
+    padding-top: 170px;
+    color: white;
+}
+
+.subscibe__component__parent h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.subscribe__my__plan {
+    width: 100%;
+    flex: 50%;
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+.subscribe__my__plan h5 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.subscibe__myplan p {
+    font-size: 20px;
+}
+
+.subscibe__links {
+    flex: 50%;
+
+}
+
+
+.subscibe__plans {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    /* justify-content: flex-end; */
+    align-items: center;
+}
+
+.subscibe__plan {
+    margin-left: 20px;
+    flex: 50%;
+}
+
+.subscibe__plan__p {
+    margin-bottom: 5px;
+}
+
+.subscribe__button {
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 15px;
+    color: white;
+    background-color: #e50914;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.subscribe__button:disabled {
+    cursor: not-allowed;
+}

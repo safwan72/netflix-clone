@@ -1,0 +1,56 @@
+.login__signup__component {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    height: 80%;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__signup__component__child {
+    margin: 40% auto;
+    background-color: rgba(37, 36, 36, 0.521);
+    padding: 5%;
+
+}
+
+.login__signup__component__child h3 {
+    font-size: 35px;
+    text-align: left;
+}
+
+.login__signup__form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.login__signup__form input {
+    width: 300px;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+}
+
+.login__signup__form input:focus {
+    border: none;
+    outline: none;
+}
+
+.login__signup__form__button {
+    position: static;
+    right: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.login__signup__form__bottom__text {
+    text-align: left;
+    margin-top: 18px;
+}

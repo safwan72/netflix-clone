@@ -1,12 +1,13 @@
 import axios from "../../Utils/axios";
+import Loader from "../../Utils/Loader";
 import React from "react";
 import './CSS/row.css';
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import { useAlert } from 'react-alert'
 import RowPopUp from "./RowPopUp";
-const Row = ({ title, fettchurl, isLargeRow }) => {
-    const baseURL = "https://image.tmdb.org/t/p/original";
+import { toast } from 'react-toastify';
+const Row = ({ title, fettchurl, isLargeRow, searchquery }) => {
+    const baseURL = process.env.REACT_APP_TMDB_IMAGE_URL;
     const [movie, setmovie] = React.useState([]);
     const [TrailerURL, setTrailerURL] = React.useState("")
     const [openpopup, setopenpopup] = React.useState(false);
@@ -19,17 +20,11 @@ const Row = ({ title, fettchurl, isLargeRow }) => {
             return request;
         }
         fetchData();
-        // effect
-        // return () => {
-        //     cleanup
-        // }
     }, [fettchurl]);
-    const alert = useAlert()
     const opts = {
         height: '450',
         width: '100%',
         playerVars: {
-            // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
         },
     };
@@ -38,6 +33,7 @@ const Row = ({ title, fettchurl, isLargeRow }) => {
         setselectedmovie(movie)
     }
     const handleClick = () => {
+        document.body.style.overflow = 'unset';
         setopenpopup(!openpopup);
         if (TrailerURL) {
             setTrailerURL("");
@@ -49,35 +45,59 @@ const Row = ({ title, fettchurl, isLargeRow }) => {
                     setTrailerURL(urlparam.get('v'));
                 })
                 .catch(err => {
-                    alert.show("Temporary Unavailable!!!");
+                    toast.dark("Temporary Unavailable!!!", {
+                        progressClassName: 'toast_error_class_progress'
+                    });
                     setTrailerURL("");
                 })
         }
     }
+    // const items = movie.filter((data) => {
+    //     if (searchquery == null)
+    //         return data
+    //     else if (data.name.toLowerCase().includes(searchquery.toLowerCase()) || data.original_name.toLowerCase().includes(searchquery.toLowerCase()) || data.overview.toLowerCase().includes(searchquery.toLowerCase()) || data.title.toLowerCase().includes(searchquery.toLowerCase()) || data.original_title.toLowerCase().includes(searchquery.toLowerCase())) {
+    //         return data
+    //     }
+    // }).map(data => {
 
+    // })
     return (
-        <div className='row__row'>
-            <h2 className='row__title'>{title}</h2>
-            <div className="row__div">
-                <div className="row__images" ref={refContainer}>
-                    <i className="fas fa-arrow-right fas__arr fa-2x slider-arrow-right"
-                        onClick={() => {
-                            refContainer.current.scrollTo({ behavior: 'smooth', left: refContainer.current.scrollLeft + 50 })
-                        }}
-                    ></i>
-                    <i className="fas fa-arrow-left fas__arr fa-2x slider-arrow-left"
-                        onClick={() => {
-                            refContainer.current.scrollTo({ behavior: 'smooth', left: refContainer.current.scrollLeft - 50 })
-                        }}></i>
-                    {movie.map((move) => (
-                        <img key={move.id} onClick={() => handlepopup(move)} className={`row__image ${isLargeRow && "row__imageLarge"}`} src={`${baseURL}${isLargeRow ? move?.poster_path : move?.backdrop_path}`} alt={title} />
-                    ))}
-                </div>
-            </div>
-            {openpopup && <RowPopUp openpopup={openpopup} handlepopup={handlepopup} selectedmovie={selectedmovie}
-                setselectedmovie={setselectedmovie} handleClick={handleClick} />}
+        <div className='row__row' onClick={() => {
+            openpopup && setopenpopup(false);
+            document.body.style.overflow = 'unset';
+        }}>
+            {movie ? (
+                <>
+                    <h2 className='row__title'>{title}</h2>
+                    <div className="row__div">
+                        <div className="row__images" ref={refContainer}>
+                            <div className={`fas__arr fa-2x slider-arrow-right ${isLargeRow && "fas__arr_large"}`}>
+                                <i className="fas fa-arrow-right"
+                                    onClick={() => {
+                                        refContainer.current.scrollTo({ behavior: 'smooth', left: refContainer.current.scrollLeft + 50 })
+                                    }}
+                                ></i>
+                            </div>
+                            <div className={`fas__arr fa-2x slider-arrow-left ${isLargeRow && "fas__arr_large"}`}>
+                                <i className="fas fa-arrow-left"
+                                    onClick={() => {
+                                        refContainer.current.scrollTo({ behavior: 'smooth', left: refContainer.current.scrollLeft - 50 })
+                                    }}></i>
+                            </div>
 
-            {TrailerURL && <YouTube videoId={TrailerURL} opts={opts} style={{ marginTop: "15px" }} />}
+                            {movie.map((move) => (
+                                <img key={move.id} onClick={() => handlepopup(move)} className={`row__image ${isLargeRow && "row__imageLarge"}`} src={`${baseURL}${isLargeRow ? move?.poster_path : move?.backdrop_path}`} alt={title} />
+                            ))}
+                        </div>
+                    </div>
+                    {openpopup && <RowPopUp openpopup={openpopup} handlepopup={handlepopup}
+                        selectedmovie={selectedmovie} setselectedmovie={setselectedmovie} handleClick={handleClick} />}
+
+                    {TrailerURL && <YouTube videoId={TrailerURL} opts={opts} style={{ marginTop: "15px" }} />}
+                </>
+            ) : (
+                <Loader />
+            )}
 
         </div>
     );
